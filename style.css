@@ -1,0 +1,1279 @@
+
+/* Кольори сайту. Змінити колір — міняйте тут */
+:root {
+  --fon: #0b132b;
+  --bilyj: #111c36;
+  --tekst: #f4f7fb;
+  --sirij: #a8b4c7;
+  --ramka: #263554;
+  --temno-sinij: #13233b;
+  --kolir:#4da3ff; /* Теплий акцент — захід сонця */
+  --pomaranchevyj:#ff9f43; 
+  --hover: #172642;
+  --svitlyj-synij: #8bc4ff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    color-scheme: dark;
+    /* завжди світла тема, навіть якщо в телефоні/Mac увімкнена темна */
+}
+
+body {
+    margin: 0;
+    background: var(--fon);
+    color: var(--tekst);
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.box {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* ============================================================
+   ШАПКА + HERO
+   ============================================================ */
+:root {
+    --granat: #0f2d57;          /* темно-синій з логотипу */
+    --sonce: #fdb515;           /* жовтий з логотипу */
+    --kryha: #eaf2ff;           /* світла панель */
+    --shryft-zagolovok: "Jost", "Montserrat", "Segoe UI", Arial, sans-serif;
+}
+
+html {
+    scroll-padding-top: 84px;
+    scroll-behavior: smooth;
+}
+
+/* ---------- Верхня панель ---------- */
+.shapka {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: linear-gradient(rgba(8, 18, 40, 0.6), rgba(8, 18, 40, 0));
+    transition: background 0.3s, box-shadow 0.3s;
+    font-family: var(--shryft-zagolovok);
+}
+
+.shapka.scrolled {
+    background: rgba(11, 19, 43, 0.9);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.shapka-in {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: start;
+    padding: 0 clamp(16px, 3vw, 40px);
+}
+
+.shapka-livo,
+.menu,
+.shapka-pravo {
+    display: flex;
+    align-items: center;
+    height: 64px;
+}
+
+.shapka-pravo {
+    justify-content: flex-end;
+}
+
+.menu {
+    gap: 28px;
+}
+
+.menu a {
+    position: relative;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 6px 0;
+}
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--sonce);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s;
+}
+
+.menu a:hover::after,
+.menu a:focus-visible::after {
+    transform: scaleX(1);
+}
+
+/* Кнопка справа */
+.shapka-knopka {
+    background: var(--sonce);
+    color: var(--granat);
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    border-radius: 999px;
+    padding: 9px 20px;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.shapka-knopka:hover {
+    background: #ffc93f;
+    transform: translateY(-1px);
+}
+
+/* Логотип на світлій «вкладці», щоб темно-синій напис було видно */
+.logo-tab {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    background: rgb(215, 228, 250);
+    border-radius: 0 0 22px 22px;
+    padding: 10px 18px 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    transition: padding 0.5s, border-radius 0.35s;
+}
+
+.logo-tab img {
+    display: block;
+    width: 230px;
+    height: auto;
+    transition: width 0.5s;
+}
+
+.shapka.scrolled .logo-tab {
+    padding: 6px 12px 7px;
+    border-radius: 0 0 14px 14px;
+}
+
+.shapka.scrolled .logo-tab img {
+    width: 80px;
+}
+
+/* Гамбургер (тільки на телефоні) */
+.burger {
+    display: none;
+    width: 44px;
+    height: 44px;
+    margin-left: -10px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.burger span,
+.burger span::before,
+.burger span::after {
+    display: block;
+    position: absolute;
+    left: 11px;
+    width: 22px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: transform 0.25s, background 0.25s;
+}
+
+.burger span {
+    top: 21px;
+}
+
+.burger span::before {
+    content: "";
+    left: 0;
+    top: -7px;
+}
+
+.burger span::after {
+    content: "";
+    left: 0;
+    top: 7px;
+}
+
+.shapka.menu-open .burger span {
+    background: transparent;
+}
+
+.shapka.menu-open .burger span::before {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.shapka.menu-open .burger span::after {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Фокус з клавіатури */
+.shapka a:focus-visible,
+.burger:focus-visible,
+.napryam:focus-visible {
+    outline: 3px solid var(--sonce);
+    outline-offset: 3px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    position: relative;
+    min-height: min(88vh, 780px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 150px 16px 0;
+    color: white;
+}
+
+/* Фон: якщо є photos/hero.jpg — буде фото, якщо ні — ілюстрація hero.svg */
+.hero-fon {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(90deg, rgba(8, 18, 40, 0.62) 0%, rgba(8, 18, 40, 0.2) 60%, rgba(8, 18, 40, 0.1) 100%),
+        linear-gradient(0deg, rgba(8, 18, 40, 0.55) 0%, rgba(8, 18, 40, 0) 45%),
+        url("photos/hero.jpg"),
+        url("photos/hero.svg");
+    background-size: cover;
+    background-position: center;
+    background-color: #0c2447;
+}
+
+.hero-in {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-family: var(--shryft-zagolovok);
+    font-weight: 500;
+    font-size: clamp(40px, 7vw, 86px);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: white;
+    margin: 0 0 18px;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero-opys {
+    max-width: 520px;
+    margin: 0;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ---------- Панель «Куди поїхати» ---------- */
+.napryamy {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 44px auto -56px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: var(--kryha);
+    color: var(--granat);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+.napryam {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 22px;
+    border-right: 1px solid rgba(15, 45, 87, 0.12);
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    background: none;
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 0;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.napryam:last-child {
+    border-right: 0;
+}
+
+.napryam:hover {
+    background: white;
+}
+
+.napryam::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: var(--sonce);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.2s;
+}
+
+.napryam[aria-pressed="true"] {
+    background: white;
+}
+
+.napryam[aria-pressed="true"]::after {
+    transform: scaleY(1);
+}
+
+.napryam-ikona {
+    flex: 0 0 64px;
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    background: var(--granat);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.napryam-ikona svg {
+    width: 38px;
+    height: 38px;
+}
+
+.napryam b {
+    display: block;
+    font-family: var(--shryft-zagolovok);
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.napryam small {
+    display: block;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #3d5478;
+    margin-top: 2px;
+}
+
+.hero + .box {
+    padding-top: 84px;
+}
+
+/* Сторінки турів: шапка завжди «стиснута», контент починається нижче неї */
+.shapka--prosta + .box {
+    padding-top: 84px;
+}
+
+/* ---------- Поява логотипа при відкритті сайту ---------- */
+/* Клас .intro додається в <head>, тільки коли сайт відкрито вперше за візит */
+.intro .logo-tab {
+    animation: tab-poyava 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+}
+
+.intro .logo-tab img {
+    animation: logo-poyava 2.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+}
+
+.intro .hero-in {
+    animation: tekst-poyava 1.4s ease-out 1.6s both;
+}
+
+.intro .napryamy {
+    animation: tekst-poyava 1.2s ease-out 2s both;
+}
+
+@keyframes tab-poyava {
+    from { opacity: 0; transform: translateY(-24px); }
+    to   { opacity: 1; transform: none; }
+}
+
+@keyframes logo-poyava {
+    from { opacity: 0; filter: blur(16px); transform: scale(0.86); }
+    60%  { opacity: 1; }
+    to   { opacity: 1; filter: blur(0); transform: none; }
+}
+
+@keyframes tekst-poyava {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .intro .logo-tab,
+    .intro .logo-tab img,
+    .intro .hero-in,
+    .intro .napryamy {
+        animation: none;
+    }
+}
+
+/* ---------- Телефон ---------- */
+@media (max-width: 820px) {
+    .shapka-in {
+        grid-template-columns: 1fr auto 1fr;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    /* Меню розкривається під панеллю */
+    .menu {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        height: auto;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #0b132b;
+        padding: 8px 20px 16px;
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.35);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    }
+
+    .shapka.menu-open .menu {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    .menu a {
+        font-size: 19px;
+        padding: 14px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu a::after {
+        display: none;
+    }
+
+    .shapka.menu-open {
+        background: #0b132b;
+    }
+
+    .logo-tab img {
+        width: 110px;
+    }
+
+    .logo-tab {
+        padding: 8px 12px 10px;
+        border-radius: 0 0 18px 18px;
+    }
+
+    .shapka.scrolled .logo-tab img {
+        width: 72px;
+    }
+
+    .shapka-knopka {
+        font-size: 14px;
+        padding: 8px 14px;
+    }
+
+    .shapka-knopka .dop {
+        display: none;
+    }
+
+    .hero {
+        padding-top: 130px;
+        min-height: 0;
+    }
+
+    .hero-opys {
+        font-size: 16px;
+    }
+
+    .napryamy {
+        grid-template-columns: 1fr;
+        margin-top: 28px;
+    }
+
+    .napryam {
+        border-right: 0;
+        border-bottom: 1px solid rgba(15, 45, 87, 0.12);
+        padding: 14px 16px;
+    }
+
+    .napryam:last-child {
+        border-bottom: 0;
+    }
+
+    .napryam-ikona {
+        flex-basis: 52px;
+        width: 52px;
+        height: 52px;
+    }
+
+    .napryam-ikona svg {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+h1,
+h2,
+h3 {
+    color: var(--tekst);
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+    margin: 6px 0 10px;
+}
+
+h2 {
+    font-size: 26px;
+    margin: 36px 0 14px;
+}
+
+.opys {
+    text-align: center;
+    color: var(--sirij);
+    max-width: 620px;
+    margin: 0 auto 14px;
+}
+
+/* Таблетки під заголовком */
+.chips {
+    text-align: center;
+}
+
+.chip {
+    display: inline-block;
+    background: var(--bilyj);
+    border: 1px solid var(--ramka);
+    border-radius: 20px;
+    padding: 6px 14px;
+    margin: 3px;
+    font-size: 14px;
+}
+
+/* Кнопки */
+.knopka {
+    display: inline-block;
+    background: var(--kolir);
+    color: white;
+    border: 0;
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.knopka:hover {
+    opacity: 0.85;
+}
+
+/* Фільтри */
+.filtry {
+    background: linear-gradient(145deg, #111c36, #0e1930);
+    border: 1px solid #263b60;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+
+    display: grid;
+    grid-template-columns: 1.2fr 1.2fr 1.2fr 1fr auto;
+    gap: 16px;
+    align-items: end;
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Окремий блок фільтра */
+.filtry > div {
+    min-width: 0;
+}
+
+/* Назви фільтрів */
+.filtry label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #aebbd0;
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+}
+
+/* Поля select та month */
+.filtry select,
+.filtry input[type="month"] {
+    width: 100%;
+    height: 48px;
+    padding: 0 15px;
+
+    border: 1px solid #304568;
+    border-radius: 12px;
+
+    background: #f7f9fc;
+    color: #16243b;
+
+    font-size: 15px;
+    font-family: inherit;
+
+    outline: none;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s,
+        transform 0.2s;
+}
+
+/* Красивий select */
+.filtry select {
+    appearance: none;
+    -webkit-appearance: none;
+
+    padding-right: 42px;
+
+    background-image:
+        linear-gradient(45deg, transparent 50%, #71809a 50%),
+        linear-gradient(135deg, #71809a 50%, transparent 50%);
+    background-position:
+        calc(100% - 19px) 20px,
+        calc(100% - 13px) 20px;
+    background-size: 6px 6px;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+}
+
+/* Hover */
+.filtry select:hover,
+.filtry input[type="month"]:hover {
+    border-color: #6d88ae;
+}
+
+/* Активне поле */
+.filtry select:focus,
+.filtry input[type="month"]:focus {
+    border-color: var(--sonce);
+    box-shadow: 0 0 0 3px rgba(253, 181, 21, 0.14);
+    transform: translateY(-1px);
+}
+
+/* Поле місяця */
+.filtry input[type="month"] {
+    cursor: pointer;
+}
+
+/* Іконка календаря */
+.filtry input[type="month"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.65;
+    width: 18px;
+    height: 18px;
+}
+
+/* Бюджет */
+.filtry input[type="range"] {
+    width: 100%;
+    height: 48px;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    accent-color: var(--sonce);
+}
+
+/* Повзунок Chrome */
+.filtry input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px;
+    border-radius: 10px;
+    background: #304568;
+}
+
+.filtry input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-top: -7px;
+
+    border: 3px solid #0e1930;
+    border-radius: 50%;
+    background: var(--sonce);
+
+    box-shadow: 0 2px 8px rgba(253, 181, 21, 0.35);
+}
+
+/* Firefox */
+.filtry input[type="range"]::-moz-range-track {
+    height: 6px;
+    border-radius: 10px;
+    background: #304568;
+}
+
+.filtry input[type="range"]::-moz-range-thumb {
+    width: 17px;
+    height: 17px;
+
+    border: 3px solid #0e1930;
+    border-radius: 50%;
+    background: var(--sonce);
+}
+
+/* Ціна */
+#cina-tekst {
+    color: var(--sonce);
+    font-weight: 600;
+}
+
+/* Чекбокс */
+.filtry > div:last-child {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+}
+
+.filtry > div:last-child label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin: 0;
+    white-space: nowrap;
+
+    color: #d5deeb;
+    cursor: pointer;
+}
+
+/* Сам чекбокс */
+.filtry input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 19px;
+    height: 19px;
+    margin: 0;
+
+    border: 1px solid #5a6b87;
+    border-radius: 5px;
+    background: #17243c;
+
+    cursor: pointer;
+    position: relative;
+
+    transition:
+        background 0.2s,
+        border-color 0.2s,
+        transform 0.15s;
+}
+
+/* Чекбокс при наведенні */
+.filtry input[type="checkbox"]:hover {
+    border-color: var(--sonce);
+    transform: scale(1.05);
+}
+
+/* Чекбокс вибраний */
+.filtry input[type="checkbox"]:checked {
+    background: var(--sonce);
+    border-color: var(--sonce);
+}
+
+/* Галочка */
+.filtry input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+
+    width: 5px;
+    height: 10px;
+
+    left: 6px;
+    top: 2px;
+
+    border: solid #13233b;
+    border-width: 0 2px 2px 0;
+
+    transform: rotate(45deg);
+}
+
+input[type="month"],
+input[type="date"] {
+    min-height: 42px;
+}
+
+input[type="month"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 1;
+    filter: none;
+}
+
+/* Картки турів */
+.tury {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.card {
+    display: block;
+    background: var(--bilyj);
+    border: 1px solid var(--ramka);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.card:hover {
+    border-color: var(--kolir);
+}
+
+.card .foto {
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: white;
+    color: var(--temno-sinij);
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 3px 11px;
+}
+
+.card .tekst {
+    padding: 14px;
+}
+
+.card h3 {
+    margin: 0 0 8px;
+}
+
+.tag {
+    display: inline-block;
+    font-size: 12px;
+    background: #eef2f8;
+    border: 1px solid var(--ramka);
+    border-radius: 20px;
+    padding: 2px 10px;
+    margin: 0 4px 4px 0;
+    color: var(--fon);
+}
+
+.cina {
+    color: var(--kolir);
+    font-size: 20px;
+    font-weight: bold;
+    margin: 8px 0 0;
+}
+
+#nema {
+    display: none;
+    text-align: center;
+    color: var(--sirij);
+    padding: 30px;
+}
+
+/* Як це працює */
+
+
+
+.kroky {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.krok {
+    background: var(--bilyj);
+    border: 1px solid var(--ramka);
+    border-radius: 14px;
+    padding: 16px;
+}
+
+.krok .nomer {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    border-radius: 50%;
+    background: #1473b5;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+/* Сторінка туру */
+.nazad {
+    display: inline-block;
+    margin: 10px 0;
+    color: var(--kolir);
+    font-weight: bold;
+}
+
+.oblozhka {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+}
+
+.vikna {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+}
+
+.vikno {
+    background: var(--bilyj);
+    border: 1px solid var(--ramka);
+    border-radius: 14px;
+    padding: 12px;
+}
+
+.vikno h3 {
+    margin: 0 0 4px;
+}
+
+.vikno p {
+    margin: 4px 0;
+    color: var(--sirij);
+}
+
+.gortalka {
+    position: relative;
+    margin: 8px 0;
+}
+
+.strichka {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    border-radius: 10px;
+}
+
+.strichka img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    scroll-snap-align: center;
+}
+
+.strilka {
+    position: absolute;
+    top: 50%;
+    margin-top: -17px;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(11, 47, 87, 0.8);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.livo {
+    left: 8px;
+}
+
+.pravo {
+    right: 8px;
+}
+
+.den {
+    border-left: 3px solid var(--kolir);
+    padding: 0 0 10px 14px;
+    margin-left: 6px;
+}
+
+.dva {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+}
+
+.blok {
+    background: var(--bilyj);
+    border: 1px solid var(--ramka);
+    border-radius: 14px;
+    padding: 12px 16px;
+}
+
+.blok ul {
+    color: var(--sirij);
+    padding-left: 18px;
+}
+
+/* Форми заявок */
+/* ============================================================
+   ФОРМИ ЗАЯВОК
+   ============================================================ */
+form.zayavka {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 18px 0;
+    padding: 26px;
+    background: linear-gradient(145deg, #111c36, #0e1930);
+    border: 1px solid #263b60;
+    border-radius: 20px;
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Кожен рядок форми. За замовчуванням — на всю ширину */
+form.zayavka p {
+    flex: 1 1 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+/* Заголовок форми */
+form.zayavka p:first-of-type b {
+    font-size: 21px;
+    color: var(--tekst);
+}
+
+/* Короткі поля стають у два стовпці */
+form.zayavka p:has(input[type="text"]),
+form.zayavka p:has(input[type="tel"]),
+form.zayavka p:has(input[type="number"]),
+form.zayavka p:has(input[type="month"]) {
+    flex: 1 1 calc(50% - 8px);
+}
+
+/* Назви полів */
+form.zayavka label:not(.hotel-vybir) {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #aebbd0;
+    letter-spacing: 0.01em;
+}
+
+/* Усі поля */
+form.zayavka input[type="text"],
+form.zayavka input[type="tel"],
+form.zayavka input[type="email"],
+form.zayavka input[type="number"],
+form.zayavka input[type="month"],
+form.zayavka textarea {
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    border: 1px solid #304568;
+    border-radius: 12px;
+    background: #f7f9fc;
+    color: #16243b;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+form.zayavka textarea {
+    height: auto;
+    min-height: 104px;
+    padding: 13px 15px;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+form.zayavka input::placeholder,
+form.zayavka textarea::placeholder {
+    color: #8a97a8;
+}
+
+form.zayavka input[type="text"]:hover,
+form.zayavka input[type="tel"]:hover,
+form.zayavka input[type="email"]:hover,
+form.zayavka input[type="number"]:hover,
+form.zayavka input[type="month"]:hover,
+form.zayavka textarea:hover {
+    border-color: #6d88ae;
+}
+
+/* Активне поле — жовте підсвічування, як у фільтрах */
+form.zayavka input:focus,
+form.zayavka textarea:focus {
+    border-color: var(--sonce);
+    box-shadow: 0 0 0 3px rgba(253, 181, 21, 0.18);
+}
+
+/* Помилка — тільки після того, як людина вже щось ввела */
+form.zayavka input:user-invalid,
+form.zayavka textarea:user-invalid {
+    border-color: #ef6b6b;
+    box-shadow: 0 0 0 3px rgba(239, 107, 107, 0.16);
+}
+
+form.zayavka input[type="month"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    opacity: 0.65;
+}
+
+/* ---------- Вибір готелю: картки з перемикачем ---------- */
+.hotel-vybir {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 10px;
+    padding: 15px 16px;
+    border: 1px solid #304568;
+    border-radius: 14px;
+    background: #14213a;
+    color: #cfdbea;
+    font-size: 15px;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.hotel-vybir:last-child {
+    margin-bottom: 0;
+}
+
+.hotel-vybir:hover {
+    border-color: #6d88ae;
+}
+
+.hotel-vybir b {
+    color: var(--tekst);
+}
+
+/* Вибраний готель */
+.hotel-vybir:has(input:checked) {
+    border-color: var(--sonce);
+    background: rgba(253, 181, 21, 0.08);
+}
+
+/* Власний перемикач */
+.hotel-vybir input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    border: 2px solid #5a6b87;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.hotel-vybir input[type="radio"]:checked {
+    border-color: var(--sonce);
+    background: radial-gradient(circle, var(--sonce) 0 45%, transparent 50%);
+}
+
+.hotel-vybir input[type="radio"]:focus-visible {
+    outline: 3px solid var(--sonce);
+    outline-offset: 3px;
+}
+
+/* ---------- Кнопка відправки ---------- */
+form.zayavka .knopka {
+    flex: 1 1 100%;
+    height: 54px;
+    margin-top: 4px;
+    border-radius: 14px;
+    background: var(--sonce);
+    color: var(--granat);
+    font-family: var(--shryft-zagolovok);
+    font-size: 17px;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+form.zayavka .knopka:hover {
+    opacity: 1;
+    background: #ffc93f;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(253, 181, 21, 0.25);
+}
+
+form.zayavka .knopka:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+}
+
+/* Приманка від спаму — ховаємо */
+.hidden-pole {
+    position: absolute;
+    left: -9999px;
+}
+
+/* Повідомлення після відправки */
+.gotovo {
+    padding: 8px 0;
+    color: #5be39a;
+    font-size: 19px;
+    font-weight: bold;
+    text-align: center;
+}
+
+@media (max-width: 560px) {
+    form.zayavka {
+        padding: 18px;
+    }
+
+    form.zayavka p:has(input[type="text"]),
+    form.zayavka p:has(input[type="tel"]),
+    form.zayavka p:has(input[type="number"]),
+    form.zayavka p:has(input[type="month"]) {
+        flex-basis: 100%;
+    }
+}
+
+/* Підвал */
+footer {
+    background: var(--temno-sinij);
+    color: #cfdbea;
+    text-align: center;
+    padding: 24px 16px;
+    margin-top: 40px;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
+}

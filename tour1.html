@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Краків + Вроцлав + Варшава — EuroWaay</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&display=swap" rel="stylesheet">
+<script>
+  // Повна поява логотипа — лише при першому відкритті сайту за візит
+  try {
+    if (!sessionStorage.getItem("ew-intro")) {
+      document.documentElement.className += " intro";
+      sessionStorage.setItem("ew-intro", "1");
+    }
+  } catch (e) {
+    document.documentElement.className += " intro";
+  }
+</script>
+</head>
+<body style="--kolir: #e11d48">
+<header class="shapka scrolled shapka--prosta" id="shapka">
+  <div class="shapka-in">
+    <div class="shapka-livo">
+      <button class="burger" type="button" id="burger" aria-label="Відкрити меню" aria-expanded="false" aria-controls="menu"><span></span></button>
+      <nav class="menu" id="menu" aria-label="Головне меню">
+        <a href="index.html#tury">Тури</a>
+        <a href="index.html#yak">Як це працює</a>
+        <a href="index.html#kontakty">Контакти</a>
+      </nav>
+    </div>
+    <a class="logo-tab" href="index.html"><img src="logo.png" alt="EuroWaay — тури, море, гори"></a>
+    <div class="shapka-pravo">
+      <a class="shapka-knopka" href="index.html#filtry">Підібрати<span class="dop"> тур</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="box">
+
+  <a class="nazad" href="index.html">← Усі тури</a>
+
+  <!-- ОБКЛАДИНКА: файл photos/tour1-cover.jpg -->
+  <img class="oblozhka" src="photos/tour1-cover.jpg" alt="Краків + Вроцлав + Варшава">
+
+  <h1 style="text-align:left">Краків + Вроцлав + Варшава</h1>
+  <span class="tag">5 днів</span>
+  <span class="tag">від 11 900 грн</span>
+  <span class="tag">☀️ без нічних переїздів</span>
+
+  <h2>Готелі</h2>
+  <div class="vikna">
+
+    <div class="vikno">
+      <h3>Готель у центрі Кракова 3</h3>
+      <div class="gortalka">
+        <div class="strichka">
+          <img src="photos/tour1-hotel1-1.jpg" alt="Готель у центрі Кракова">
+          <img src="photos/tour1-hotel1-2.jpg" alt="Готель у центрі Кракова">
+          <img src="photos/tour1-hotel1-3.jpg" alt="Готель у центрі Кракова">
+        </div>
+        <button type="button" class="strilka livo" onclick="gortaty(this, -1)">‹</button>
+        <button type="button" class="strilka pravo" onclick="gortaty(this, 1)">›</button>
+      </div>
+      <p>Скромний, 10 хв пішки до Старого міста</p>
+      <p><b>входить у ціну</b></p>
+      <!-- ПОСИЛАННЯ НА ГОТЕЛЬ: замініть # на адресу, наприклад https://www.booking.com/... -->
+      <a class="knopka" href="https://www.booking.com/hotel/pl/q-hotel-krakow.uk.html?aid=318615&label=New_Ukrainian_UK_5226437665-yIkX6W%2AEJoVw6HRjm85eXAS821491972061%3Apl%3Ata%3Ap1%3Ap2%3Aac%3Aap%3Aneg&sid=b9b2af317904680a660c80b814f792de&dest_id=-510625&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1791494261&srpvid=0f0eb48d2f45f834a0f13c77b1183918&type=total&ucfs=1&" target="_blank">Докладніше</a>
+    </div>
+
+    <div class="vikno">
+      <h3>Готель біля Ринкової площі 4</h3>
+      <div class="gortalka">
+        <div class="strichka">
+          <img src="photos/tour1-hotel2-1.jpg" alt="Готель біля Ринкової площі">
+          <img src="photos/tour1-hotel2-2.jpg" alt="Готель біля Ринкової площі">
+          <img src="photos/tour1-hotel2-3.jpg" alt="Готель біля Ринкової площі">
+        </div>
+        <button type="button" class="strilka livo" onclick="gortaty(this, -1)">‹</button>
+        <button type="button" class="strilka pravo" onclick="gortaty(this, 1)">›</button>
+      </div>
+      <p>Просторі номери, СПА</p>
+      <p><b>+2 200 грн/особу</b></p>
+      <!-- ПОСИЛАННЯ НА ГОТЕЛЬ: замініть # на адресу, наприклад https://www.booking.com/... -->
+      <a class="knopka" href="https://www.booking.com/hotel/pl/hotelpalladian.uk.html?aid=356980&label=gog235jc-10CAUotgFCEm1haW4tbWFya2V0LXNxdWFyZUgpWANo6QGIAQGYATO4ARfIAQzYAQPoAQH4AQGIAgGoAgG4As-VoNYGwAIB0gIkYTU4NGUzNjgtNzEzNi00NWVlLWJmNmEtN2ZkMjU2Njk3Mzc52AIB4AIB&sid=b9b2af317904680a660c80b814f792de&dest_id=-510625&dest_type=city&dist=0&group_adults=2&group_children=0&hapos=1&hpos=1&no_rooms=1&req_adults=2&req_children=0&room1=A%2CA&sb_price_type=total&sr_order=popularity&srepoch=1791494876&srpvid=28ae62474ccc2a28314173ff410d934b&type=total&ucfs=1&" target="_blank">Докладніше</a>
+    </div>
+  </div>
+
+  <h2>Головні пам'ятки</h2>
+  <div class="vikna">
+    <div class="vikno">
+      <div class="gortalka">
+        <div class="strichka">
+          <img src="photos/tour1-sights-1.jpg" alt="Пам'ятки">
+          <img src="photos/tour1-sights-2.jpg" alt="Пам'ятки">
+          <img src="photos/tour1-sights-3.jpg" alt="Пам'ятки">
+          <img src="photos/tour1-sights-4.jpg" alt="Пам'ятки">
+        </div>
+        <button type="button" class="strilka livo" onclick="gortaty(this, -1)">‹</button>
+        <button type="button" class="strilka pravo" onclick="gortaty(this, 1)">›</button>
+      </div>
+    </div>
+  </div>
+
+  <h2>Програма по днях</h2>
+    <div class="den"><b>День 1.</b> Виїзд, кордон, Краків: Вавель і Старе місто.</div>
+    <div class="den"><b>День 2.</b> Величка, вечір у Кракові.</div>
+    <div class="den"><b>День 3.</b> Переїзд до Вроцлава, острів Тумський.</div>
+    <div class="den"><b>День 4.</b> Варшава: Королівський шлях.</div>
+    <div class="den"><b>День 5.</b> Повернення до Львова.</div>
+
+  <h2>Що входить у вартість</h2>
+  <div class="dva">
+    <div class="blok"><b>✅ Входить у вартість</b><ul><li>Проїзд автобусом</li><li>3 ночей у готелі</li><li>Сніданки</li><li>Супровід гіда</li></ul></div>
+    <div class="blok"><b>➕ Оплачується додатково</b><ul><li>Екскурсії та вхідні квитки</li><li>Страхування</li><li>Обіди та вечері</li></ul></div>
+  </div>
+
+  <h2>Збір групи у Львові</h2>
+  <div class="blok">Час збору: <b>05:30</b><ul><li><b>Головний вокзал</b> — пл. Вокзальна, 1а, біля центрального входу</li><li><b>Стрийський автовокзал</b> — вул. Стрийська, 109, біля платформ</li></ul></div>
+
+  <h2>Заявка на тур</h2>
+
+  <!-- ПОВНА ЗАЯВКА -->
+  <form class="zayavka">
+    <p><b>Повна заявка адміністратору</b></p>
+    <input type="hidden" name="_subject" value="Заявка на тур: Краків + Вроцлав + Варшава">
+    <input type="hidden" name="Тур" value="Краків + Вроцлав + Варшава">
+    <input type="text" name="_gotcha" class="hidden-pole" tabindex="-1" autocomplete="off">
+    <p>
+      <label class="hotel-vybir"><input type="radio" name="Готель" value="Готель у центрі Кракова 3*" checked> <b>Готель у центрі Кракова</b> 3* — входить у ціну</label>
+      <label class="hotel-vybir"><input type="radio" name="Готель" value="Готель біля Ринкової площі 4*"> <b>Готель біля Ринкової площі</b> 4* — +2 200 грн/особу</label>
+    </p>
+    <p><label>Ім'я</label><input type="text" name="Ім'я" required></p>
+    <p><label>Телефон</label><input type="tel" name="Телефон" required placeholder="+380..."></p>
+    <p><label>E-mail</label><input type="email" name="email"></p>
+    <p><label>Кількість осіб</label><input type="number" name="Кількість осіб" value="2" min="1" max="50"></p>
+    <p><label>Бажаний місяць</label><input type="month" name="Місяць"></p>
+    <p><label>Коментар</label><textarea name="Коментар" rows="3"></textarea></p>
+    <button class="knopka" type="submit">Надіслати заявку</button>
+  </form>
+
+  <!-- ШВИДКИЙ ДЗВІНОК -->
+  <form class="zayavka">
+    <p><b>Або просто передзвоніть мені</b></p>
+    <input type="hidden" name="_subject" value="Передзвонити: Краків + Вроцлав + Варшава">
+    <input type="hidden" name="Тур" value="Краків + Вроцлав + Варшава">
+    <input type="text" name="_gotcha" class="hidden-pole" tabindex="-1" autocomplete="off">
+    <p><label>Ім'я</label><input type="text" name="Ім'я" required></p>
+    <p><label>Телефон</label><input type="tel" name="Телефон" required placeholder="+380..."></p>
+    <button class="knopka" type="submit">Передзвоніть мені</button>
+  </form>
+
+</div>
+
+<footer>
+  <b>EuroWaay</b> — автобусні тури Європою зі Львова<br>
+  Ціни орієнтовні; наявність місць підтверджує менеджер.<br>
+  <a href="mailto:eurowaay@gmail.com">eurowaay@gmail.com</a>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

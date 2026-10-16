@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EuroWaay — автобусні тури Європою зі Львова</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600&display=swap" rel="stylesheet">
+<script>
+  // Повна поява логотипа — лише при першому відкритті сайту за візит
+  try {
+    if (!sessionStorage.getItem("ew-intro")) {
+      document.documentElement.className += " intro";
+      sessionStorage.setItem("ew-intro", "1");
+    }
+  } catch (e) {
+    document.documentElement.className += " intro";
+  }
+</script>
+</head>
+<body>
+<header class="shapka" id="shapka" data-hero="1">
+  <div class="shapka-in">
+    <div class="shapka-livo">
+      <button class="burger" type="button" id="burger" aria-label="Відкрити меню" aria-expanded="false" aria-controls="menu"><span></span></button>
+      <nav class="menu" id="menu" aria-label="Головне меню">
+        <a href="index.html#tury">Тури</a>
+        <a href="index.html#yak">Як це працює</a>
+        <a href="index.html#hero-scroll">Про нас</a>
+      </nav>
+    </div>
+    <a id="logo-scroll" class="logo-tab" href="index.html"><img src="logo.png" alt="EuroWaay — тури, море, гори"></a>
+    <div class="shapka-pravo">
+      <a class="shapka-knopka" href="#filtry">Підібрати<span class="dop"> тур</span></a>
+    </div>
+  </div>
+</header>
+
+<section id="hero-scroll" class="hero">
+  <div class="hero-fon" role="img" aria-label="Гори, сонце і море"></div>
+
+  <div class="hero-in">
+    <h1>Автобусні тури<br>Європою зі Львова</h1>
+    <p class="hero-opys">Оберіть виїзд, країну та дати — менеджер передзвонить і проконсультує щодо документів.</p>
+  </div>
+
+  <!-- Швидкий вибір: натисніть — і список турів відфільтрується -->
+  <div class="napryamy" role="group" aria-label="Куди поїхати">
+    <button type="button" class="napryam" data-typ="more" aria-pressed="false">
+      <span class="napryam-ikona"><svg viewBox="0 0 40 40" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="27" cy="11" r="5" fill="#fdb515"/><path d="M4 22c4-5 8-5 12 0s8 5 12 0 6-4 8-2" stroke="#fff" stroke-width="3"/><path d="M4 31c4-5 8-5 12 0s8 5 12 0 6-4 8-2" stroke="#8bc4ff" stroke-width="3"/></svg></span>
+      <span><b>Море</b><small>Хорватія, Греція, Іспанія, Болгарія</small></span>
+    </button>
+    <button type="button" class="napryam" data-typ="gory" aria-pressed="false">
+      <span class="napryam-ikona"><svg viewBox="0 0 40 40" fill="none" stroke-linejoin="round" aria-hidden="true"><circle cx="29" cy="11" r="5" fill="#fdb515"/><path d="M3 33 15 12l7 11 4-6 11 16z" fill="#fff"/><path d="M15 12l-4 7 3-1 2 3 2-3 3 1z" fill="#8bc4ff"/></svg></span>
+      <span><b>Гори</b><small>Лижі в Альпах, Дурмітор у Чорногорії</small></span>
+    </button>
+    <button type="button" class="napryam" data-typ="mista" aria-pressed="false">
+      <span class="napryam-ikona"><svg viewBox="0 0 40 40" fill="none" stroke-linejoin="round" aria-hidden="true"><path d="M19 3h2v6h-2z" fill="#fdb515"/><path d="M20 8l5 8H15z" fill="#fff"/><rect x="15" y="16" width="10" height="17" fill="#fff"/><rect x="5" y="21" width="9" height="12" fill="#8bc4ff"/><rect x="26" y="19" width="9" height="14" fill="#8bc4ff"/><rect x="18" y="22" width="4" height="5" fill="#0f2d57"/><path d="M3 33h34" stroke="#fdb515" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+      <span><b>Міста</b><small>Краків, Прага, Відень, Рим</small></span>
+    </button>
+  </div>
+</section>
+
+<div class="box">
+  <div class="chips">
+    <span class="chip">🛂 Консультація щодо документів</span>
+    <span class="chip">🚌 Виїзд зі Львова</span>
+    <span class="chip">🏖️ Море</span>
+    <span class="chip">🏔️ Гори</span>
+  </div>
+
+  <!-- ФІЛЬТРИ -->
+  <div class="filtry" id="filtry">
+    <div>
+      <label>Місце виїзду у Львові</label>
+      <select id="f-vyizd" onchange="filterTours()">
+        <option value="">Будь-яке</option><option value="vok">Головний вокзал</option><option value="stry">Стрийський автовокзал</option><option value="as8">АС-8</option>
+      </select>
+    </div>
+    <div>
+      <label>Країна</label>
+      <select id="f-krajina" onchange="filterTours()">
+        <option value="">Усі країни</option><option>Польща</option><option>Чехія</option><option>Австрія</option><option>Італія</option><option>Франція</option><option>Хорватія</option><option>Чорногорія</option><option>Греція</option><option>Іспанія</option><option>Болгарія</option>
+      </select>
+    </div>
+    <div>
+      <label>Місяць поїздки</label>
+      <input type="month" id="f-misyac" onchange="filterTours()">
+    </div>
+    <div>
+      <label>Бюджет до: <b id="cina-tekst">40000</b> грн</label>
+      <input type="range" id="f-cina" min="8000" max="40000" step="500" value="40000" oninput="filterTours()">
+    </div>
+    <div>
+      <label><input type="checkbox" id="f-nichni" onchange="filterTours()"> Без нічних переїздів</label>
+    </div>
+  </div>
+
+  <!-- КАРТКИ ТУРІВ -->
+  <div class="tury" id="tury">
+
+    <!-- ТУР 1: Краків + Вроцлав + Варшава -->
+    <a class="card" href="tour1.html" data-typ="mista" style="--kolir: #e11d48"
+       data-krajina="Польща" data-vyizd="vok stry" data-misyaci="2026-11 2026-12"
+       data-cina="11900" data-nich="ni">
+      <div class="foto">
+        <img src="photos/tour1-cover.jpg" alt="Краків + Вроцлав + Варшава">
+        <span class="badge">Польща</span>
+      </div>
+      <div class="tekst">
+        <h3>Краків + Вроцлав + Варшава</h3>
+        <span class="tag">5 днів</span>
+        <span class="tag">☀️ без нічних</span>
+        <p class="cina">від 11 900 грн</p>
+      </div>
+    </a>
+
+    <!-- ТУР 2: Золота Прага + Карлові Вари -->
+    <a class="card" href="tour2.html" data-typ="mista" style="--kolir: #2563eb"
+       data-krajina="Чехія" data-vyizd="vok as8" data-misyaci="2026-11 2027-01"
+       data-cina="10500" data-nich="tak">
+      <div class="foto">
+        <img src="photos/tour2-cover.jpg" alt="Золота Прага + Карлові Вари">
+        <span class="badge">Чехія</span>
+      </div>
+      <div class="tekst">
+        <h3>Золота Прага + Карлові Вари</h3>
+        <span class="tag">4 днів</span>
+        <span class="tag">🌙 є нічний переїзд</span>
+        <p class="cina">від 10 500 грн</p>
+      </div>
+    </a>
+
+    <!-- ТУР 3: Відень + Зальцбург -->
+    <a class="card" href="tour3.html" data-typ="mista" style="--kolir: #7c3aed"
+       data-krajina="Австрія" data-vyizd="stry as8" data-misyaci="2026-12 2027-03"
+       data-cina="16800" data-nich="ni">
+      <div class="foto">
+        <img src="photos/tour3-cover.jpg" alt="Відень + Зальцбург">
+        <span class="badge">Австрія</span>
+      </div>
+      <div class="tekst">
+        <h3>Відень + Зальцбург</h3>
+        <span class="tag">6 днів</span>
+        <span class="tag">☀️ без нічних</span>
+        <p class="cina">від 16 800 грн</p>
+      </div>
+    </a>
+
+    <!-- ТУР 4: Рим, Флоренція, Венеція -->
+    <a class="card" href="tour4.html" data-typ="mista" style="--kolir: #059669"
+       data-krajina="Італія" data-vyizd="vok stry as8" data-misyaci="2027-03 2027-04"
+       data-cina="26500" data-nich="tak">
+      <div class="foto">
+        <img src="photos/tour4-cover.jpg" alt="Рим, Флоренція, Венеція">
+        <span class="badge">Італія</span>
+      </div>
+      <div class="tekst">
+        <h3>Рим, Флоренція, Венеція</h3>
+        <span class="tag">9 днів</span>
+        <span class="tag">🌙 є нічний переїзд</span>
+        <p class="cina">від 26 500 грн</p>
+      </div>
+    </a>
+
+    <!-- ТУР 5: Куршевель: лижний тур у Альпах -->
+    <a class="card" href="tour5.html" data-typ="gory" style="--kolir: #0284c7"
+       data-krajina="Франція" data-vyizd="vok as8" data-misyaci="2026-12 2027-01 2027-02"
+       data-cina="38500" data-nich="tak">
+      <div class="foto">
+        <img src="photos/tour5-cover.jpg" alt="Куршевель: лижний тур у Альпах">
+        <span class="badge">Франція</span>
+      </div>
+      <div class="tekst">
+        <h3>Куршевель: лижний тур у Альпах</h3>
+        <span class="tag">8 днів</span>
+        <span class="tag">🌙 є нічний переїзд</span>
+        <p class="cina">від 38 500 грн</p>
+      </div>
+    </a>
+
+    <!-- ТУР 6: Рив'єра Макарської + Спліт -->
+    <a class="card" href="tour6.html" data-typ="more" style="--kolir: #0891b2"
+       data-krajina="Хорватія" data-vyizd="vok stry" data-misyaci="2027-06 2027-07 2027-08 2027-09"
+       data-cina="21900" data-nich="tak">
+      <div class="foto">
+        <img src="photos/tour6-cover.jpg" alt="Рив'єра Макарської + Спліт">
+        <span class="badge">Хорватія</span>
+      </div>
+      <div class="tekst">
+        <h3>Рив'єра Макарської + Спліт</h3>
+        <span class="tag">10 днів</span>
+        <span class="tag">🌙 є нічний переїзд</span>
+        <p class="cina">від 21 900 грн</p>
+      </div>
+    </a>
+
+    <!-- ТУР 7: Будва + Котор + Дурмітор -->
+    <a class="card" href="tour7.html" data-typ="more gory" style="--kolir: #4d7c0f"
+       data-krajina="Чорногорія" data-vyizd="stry as8" data-misyaci="2027-06 2027-07 2027-08 2027-09"
+       data-cina="23500" data-nich="tak">
+      <div class="foto">
+        <img src="photos/tour7-cover.jpg" alt="Будва + Котор + Дурмітор">
+        <span class="badge">Чорногорія</span>
+      </div>
+      <div class="tekst">
+        <h3>Будва + Котор + Дурмітор</h3>
+        <span class="tag">10 днів</span>
+        <span class="tag">🌙 є нічний переїзд</span>
+        <p class="cina">від 23 500 грн</p>
+      </div>
+    </a>
+
+    <!-- ТУР 8: Халкідіки: відпочинок на морі -->
+    <a class="card" href="tour8.html" data-typ="more" style="--kolir: #0369a1"
+       data-krajina="Греція" data-vyizd="vok as8" data-misyaci="2027-06 2027-07 2027-08 2027-09"
+       data-cina="24800" data-nich="tak">
+      <div class="foto">
+        <img src="photos/tour8-cover.jpg" alt="Халкідіки: відпочинок на морі">
+        <span class="badge">Греція</span>
+      </div>
+      <div class="tekst">
+        <h3>Халкідіки: відпочинок на морі</h3>
+        <span class="tag">11 днів</span>
+        <span class="tag">🌙 є нічний переїзд</span>
+        <p class="cina">від 24 800 грн</p>
+      </div>
+    </a>
+
+    <!-- ТУР 9: Коста-Брава + Барселона -->
+    <a class="card" href="tour9.html" data-typ="more mista" style="--kolir: #db2777"
+       data-krajina="Іспанія" data-vyizd="vok stry as8" data-misyaci="2027-06 2027-07 2027-08 2027-09"
+       data-cina="27900" data-nich="ni">
+      <div class="foto">
+        <img src="photos/tour9-cover.jpg" alt="Коста-Брава + Барселона">
+        <span class="badge">Іспанія</span>
+      </div>
+      <div class="tekst">
+        <h3>Коста-Брава + Барселона</h3>
+        <span class="tag">12 днів</span>
+        <span class="tag">☀️ без нічних</span>
+        <p class="cina">від 27 900 грн</p>
+      </div>
+    </a>
+
+    <!-- ТУР 10: Сонячний берег + Несебр -->
+    <a class="card" href="tour10.html" data-typ="more" style="--kolir: #0d9488"
+       data-krajina="Болгарія" data-vyizd="stry as8" data-misyaci="2027-06 2027-07 2027-08 2027-09"
+       data-cina="17900" data-nich="tak">
+      <div class="foto">
+        <img src="photos/tour10-cover.jpg" alt="Сонячний берег + Несебр">
+        <span class="badge">Болгарія</span>
+      </div>
+      <div class="tekst">
+        <h3>Сонячний берег + Несебр</h3>
+        <span class="tag">9 днів</span>
+        <span class="tag">🌙 є нічний переїзд</span>
+        <p class="cina">від 17 900 грн</p>
+      </div>
+    </a>
+
+  </div>
+  <p id="nema">Нічого не знайдено — змініть фільтри або залиште заявку, ми підберемо тур.</p>
+
+  <h2 id="yak">Як це працює</h2>
+  <div class="kroky">
+    <div class="krok"><span class="nomer">1</span><br><b>Оберіть тур</b><br>Виберіть країну, дати та місце виїзду у Львові.</div>
+    <div class="krok"><span class="nomer">2</span><br><b>Залиште заявку</b><br>Лише ім'я та телефон — без оплати онлайн.</div>
+    <div class="krok"><span class="nomer">3</span><br><b>Менеджер передзвонить</b><br>Перевірить місця та підкаже щодо документів і кордону.</div>
+  </div>
+
+</div>
+
+<footer id="kontakty">
+  <b>EuroWaay</b> — автобусні тури Європою зі Львова<br>
+  Ціни орієнтовні; наявність місць підтверджує менеджер.<br>
+  <a href="mailto:eurowaay@gmail.com">eurowaay@gmail.com</a>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
